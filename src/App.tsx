@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { getCredentials } from './utils/getCredentials';
+// import { getAreasPrimary } from './utils/getAreasPrimary';
 import { getAreasSecondary } from './utils/getAreasSecondary';
 import { getAreasData } from './utils/getAreasData';
+import { MapContainer, Polygon, TileLayer } from 'react-leaflet';
 import Form from './Form';
 import LoginSection from './LoginSection';
 import NavSection from './NavSection';
 import './App.css';
+import { polygon2 } from './assets/polygon2';
 
 const App = () => {
   const [key, setKey] = useState('');
@@ -22,6 +25,11 @@ const App = () => {
     e.preventDefault();
     getCredentials(username, password, setKey, setLoginState);
   };
+
+  // const handlePrimary = (e: React.SyntheticEvent<EventTarget>) => {
+  // e.preventDefault();
+  //   getAreasPrimary();
+  // };
 
   const handleSecondary = (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
@@ -53,7 +61,13 @@ const App = () => {
         </Form>
       </header>
       <section ref={secondaryRef}>
-
+        <MapContainer center={[18.6, 52.005]} zoom={12} scrollWheelZoom={false}>
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          />
+          <Polygon pathOptions={{ color: 'purple' }} positions={polygon2} />
+        </MapContainer>
       </section>
     </div>
   );
