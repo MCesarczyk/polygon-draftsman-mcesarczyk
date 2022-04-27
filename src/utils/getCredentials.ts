@@ -10,12 +10,12 @@ const bodyContent = JSON.stringify({
   "password": process.env.REACT_APP_API_PASSWORD
 });
 
-export const getCredentials = () => {
+export const getCredentials = (setKey: (key: string) => void) => {
   fetch(url, {
     method: "POST",
     body: bodyContent,
     headers: headersList
   })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => setKey(data.key))
 };

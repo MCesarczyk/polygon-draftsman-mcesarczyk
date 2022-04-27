@@ -1,19 +1,26 @@
+import { useEffect, useState } from 'react';
 import { getCredentials } from './utils/getCredentials';
 import { getAreasSecondary } from './utils/getAreasSecondary';
 import { getAreasData } from './utils/getAreasData';
 import './App.css';
 
 const App = () => {
+  const [key, setKey] = useState('');
+
+  useEffect(() => {
+    console.log(key);
+  }, [key]);
+
   const handleLogin = () => {
-    getCredentials();
+    getCredentials(setKey);
   };
 
   const handleSecondary = () => {
-    getAreasSecondary();
+    getAreasSecondary(key);
   };
 
   const handleData = () => {
-    getAreasData();
+    getAreasData(key);
   };
 
   return (
