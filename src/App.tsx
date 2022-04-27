@@ -6,13 +6,15 @@ import './App.css';
 
 const App = () => {
   const [key, setKey] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   useEffect(() => {
     console.log(key);
   }, [key]);
 
   const handleLogin = () => {
-    getCredentials(setKey);
+    getCredentials(username, password, setKey);
   };
 
   const handleSecondary = () => {
@@ -26,9 +28,41 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <button className="App-button" onClick={handleLogin}>get login credentials</button>
-        <button className="App-button" onClick={handleSecondary}>get /areas/secondary</button>
-        <button className="App-button" onClick={handleData}>get /areas/data</button>
+        <div className="App-loginWrapper">
+          <div className="App-loginInnerWrapper">
+            <input
+              className="App-input"
+              name="username"
+              value={username}
+              onChange={e => setUsername(e.target.value)}
+            />
+            <input
+              className="App-input"
+              name="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+            <button
+              className="App-button"
+              onClick={handleLogin}>
+              LOG IN
+            </button>
+          </div>
+          <div className="App-loginInnerWrapper">
+            <button
+              className="App-button"
+              onClick={handleSecondary}
+            >
+              get /areas/secondary
+            </button>
+            <button
+              className="App-button"
+              onClick={handleData}
+            >
+              get /areas/data
+            </button>
+          </div>
+        </div>
       </header>
     </div>
   );

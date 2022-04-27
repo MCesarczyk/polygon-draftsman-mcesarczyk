@@ -39,7 +39,24 @@
 
 .App-button {
   padding: 0.5rem 1rem;
-  margin: 1rem;
+  margin: 0.75rem 1rem;
+}
+
+.App-input {
+  padding: 0.5rem 1rem;
+  margin: 0.75rem 1rem;
+}
+
+.App-loginWrapper {
+  display: flex;
+  border: 1px solid #fff;
+  border-radius: 0.2rem;
+  padding: 1rem;
+}
+
+.App-loginInnerWrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .leaflet-container {
