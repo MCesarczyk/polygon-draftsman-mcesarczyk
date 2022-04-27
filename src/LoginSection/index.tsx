@@ -1,4 +1,4 @@
-import "./style.css";
+import "../Form/style.css";
 
 type props = {
   username: string,

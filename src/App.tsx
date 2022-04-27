@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { getCredentials } from './utils/getCredentials';
 import { getAreasSecondary } from './utils/getAreasSecondary';
 import { getAreasData } from './utils/getAreasData';
 import Form from './Form';
-import './App.css';
 import LoginSection from './LoginSection';
+import NavSection from './NavSection';
+import './App.css';
 
 const App = () => {
   const [key, setKey] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loginState, setLoginState] = useState("not logged in");
+  const secondaryRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     console.log(key);
@@ -24,6 +26,7 @@ const App = () => {
   const handleSecondary = (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
     getAreasSecondary(key);
+    secondaryRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleData = (e: React.SyntheticEvent<EventTarget>) => {
@@ -43,28 +46,15 @@ const App = () => {
             setPassword={setPassword}
             handleLogin={handleLogin}
           />
-          <div className="App-loginInnerWrapper">
-            <button
-              className="App-button"
-              disabled
-            >
-              get&nbsp;/areas/primary
-            </button>
-            <button
-              className="App-button"
-              onClick={handleSecondary}
-            >
-              get&nbsp;/areas/secondary
-            </button>
-            <button
-              className="App-button"
-              onClick={handleData}
-            >
-              get&nbsp;/areas/data
-            </button>
-          </div>
+          <NavSection
+            handleSecondary={handleSecondary}
+            handleData={handleData}
+          />
         </Form>
       </header>
+      <section ref={secondaryRef}>
+
+      </section>
     </div>
   );
 }
