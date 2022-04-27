@@ -4,6 +4,7 @@ import { getAreasSecondary } from './utils/getAreasSecondary';
 import { getAreasData } from './utils/getAreasData';
 import Form from './Form';
 import './App.css';
+import LoginSection from './LoginSection';
 
 const App = () => {
   const [key, setKey] = useState('');
@@ -35,25 +36,13 @@ const App = () => {
       <header className="App-header">
         <h1 className="App-title">Polygon draftsman</h1>
         <Form loginState={loginState}>
-          <div className={`App-loginInnerWrapper`}>
-            <input
-              className="App-input"
-              name="username"
-              value={username}
-              onChange={e => setUsername(e.target.value)}
-            />
-            <input
-              className="App-input"
-              name="password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-            />
-            <button
-              className="App-button"
-              onClick={handleLogin}>
-              LOG IN
-            </button>
-          </div>
+          <LoginSection
+            username={username}
+            password={password}
+            setUsername={setUsername}
+            setPassword={setPassword}
+            handleLogin={handleLogin}
+          />
           <div className="App-loginInnerWrapper">
             <button
               className="App-button"
