@@ -1,0 +1,21 @@
+.Form-fieldset {
+  font-size: 1.25rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 0.2rem;
+  padding: 1rem;
+}
+
+.Form-fieldset--warning {
+  color: red;
+  border-color: red;
+}
+
+.Form-fieldset--success {
+  color: green;
+  border-color: green;
+}
+
+.Form-legend {
+  padding-bottom: 0.375rem;
+}

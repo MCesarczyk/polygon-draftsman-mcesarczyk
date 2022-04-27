@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getCredentials } from './utils/getCredentials';
 import { getAreasSecondary } from './utils/getAreasSecondary';
 import { getAreasData } from './utils/getAreasData';
+import Form from './Form';
 import './App.css';
 
 const App = () => {
@@ -33,56 +34,47 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <h1 className="App-title">Polygon draftsman</h1>
-        <form>
-          <fieldset
-            className={`
-              App-loginWrapper 
-              ${loginState === "logged in" ? "App-success" : ""}
-              ${loginState === "login failed" ? "App-warning" : ""}
-          `}
-          >
-            <legend className={`App-legend`}>{loginState}</legend>
-            <div className={`App-loginInnerWrapper`}>
-              <input
-                className="App-input"
-                name="username"
-                value={username}
-                onChange={e => setUsername(e.target.value)}
-              />
-              <input
-                className="App-input"
-                name="password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-              />
-              <button
-                className="App-button"
-                onClick={handleLogin}>
-                LOG IN
-              </button>
-            </div>
-            <div className="App-loginInnerWrapper">
-              <button
-                className="App-button"
-                disabled
-              >
-                get&nbsp;/areas/primary
-              </button>
-              <button
-                className="App-button"
-                onClick={handleSecondary}
-              >
-                get&nbsp;/areas/secondary
-              </button>
-              <button
-                className="App-button"
-                onClick={handleData}
-              >
-                get&nbsp;/areas/data
-              </button>
-            </div>
-          </fieldset>
-        </form>
+        <Form loginState={loginState}>
+          <div className={`App-loginInnerWrapper`}>
+            <input
+              className="App-input"
+              name="username"
+              value={username}
+              onChange={e => setUsername(e.target.value)}
+            />
+            <input
+              className="App-input"
+              name="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+            <button
+              className="App-button"
+              onClick={handleLogin}>
+              LOG IN
+            </button>
+          </div>
+          <div className="App-loginInnerWrapper">
+            <button
+              className="App-button"
+              disabled
+            >
+              get&nbsp;/areas/primary
+            </button>
+            <button
+              className="App-button"
+              onClick={handleSecondary}
+            >
+              get&nbsp;/areas/secondary
+            </button>
+            <button
+              className="App-button"
+              onClick={handleData}
+            >
+              get&nbsp;/areas/data
+            </button>
+          </div>
+        </Form>
       </header>
     </div>
   );
