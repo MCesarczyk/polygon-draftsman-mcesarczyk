@@ -8,6 +8,7 @@ import Form from './Form';
 import LoginSection from './LoginSection';
 import NavSection from './NavSection';
 import './App.css';
+import Placeholder from './Placeholder';
 
 const App = () => {
   const [key, setKey] = useState('');
@@ -15,6 +16,8 @@ const App = () => {
   const [password, setPassword] = useState('');
   const [loginState, setLoginState] = useState("not logged in");
   const [secondary, setSecondary] = useState([]);
+  const [viewCenter, setViewCenter]: [any, React.Dispatch<React.SetStateAction<number[]>>] = useState([0, 0]);
+  const [secondaryState, setSecondaryState] = useState("idle");
 
   const secondaryRef = useRef<HTMLElement>(null);
 
@@ -32,7 +35,7 @@ const App = () => {
 
   const handleSecondary = (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
-    getAreasSecondary(key, setSecondary);
+    getAreasSecondary(key, setSecondary, setViewCenter, setSecondaryState);
     secondaryRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -60,13 +63,16 @@ const App = () => {
         </Form>
       </header>
       <section ref={secondaryRef}>
-        <MapContainer center={[18.6, 52.005]} zoom={15} scrollWheelZoom={false}>
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          />
-          <Polygon pathOptions={{ color: 'purple' }} positions={secondary} />
-        </MapContainer>
+        {secondaryState === "ready" ?
+          <MapContainer center={viewCenter} zoom={15} scrollWheelZoom={false}>
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            />
+            <Polygon pathOptions={{ color: 'purple' }} positions={secondary} />
+          </MapContainer> :
+          <Placeholder message={secondaryState} />
+        }
       </section>
     </div>
   );
