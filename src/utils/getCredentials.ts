@@ -1,4 +1,6 @@
-const url = `${process.env.REACT_APP_API_URL}/users/login/`;
+import { API_URL } from "../assets/variables";
+
+const url = `${API_URL}/users/login/`;
 
 export const getCredentials = async (
   username: string,

@@ -1,7 +1,8 @@
+import { API_URL } from "../assets/variables";
 import { findViewCenter } from "./findViewCenter";
 import { postprocessSecondaryData } from "./postprocessSecondaryData";
 
-const apiUrl = process.env.REACT_APP_API_URL;
+const apiUrl = API_URL;
 const url = `${apiUrl}/areas/secondary`;
 
 export const getAreasSecondary = async (
