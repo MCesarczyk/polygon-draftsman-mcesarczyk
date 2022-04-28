@@ -21,12 +21,15 @@ const App = () => {
   const [viewCenter, setViewCenter]: [any, React.Dispatch<React.SetStateAction<number[]>>] = useState([0, 0]);
   const [secondaryState, setSecondaryState] = useState("idle");
 
-  const [areasData, setAreasData] = useState([]);
+  const [data, setData] = useState([]);
+  const [dataDims, setDataDims] = useState([640, 480])
 
   const secondaryRef = useRef<HTMLElement>(null);
   const dataRef = useRef<HTMLElement>(null);
 
   useEffect(() => window.scrollTo(0, 0), []);
+
+  useEffect(() => setDataDims([window.innerWidth*0.8, window.innerWidth*0.6]), [window.innerWidth]);
 
   const handleLogin = (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
@@ -46,7 +49,7 @@ const App = () => {
 
   const handleData = (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
-    getAreasData(key, setAreasData);
+    getAreasData(key, setData);
     dataRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -82,13 +85,8 @@ const App = () => {
       </Section>
       <Section sectionRef={dataRef}>
         <Plot
-          data={[
-            {
-              z: areasData,
-              type: 'heatmap'
-            }
-          ]}
-          layout={{ width: 640, height: 480, title: "GET /areas/data" }}
+          data={[{ z: data, type: 'heatmap' }]}
+          layout={{ width: dataDims[0], height: dataDims[1], title: "GET /areas/data" }}
         />
       </Section>
     </div>
