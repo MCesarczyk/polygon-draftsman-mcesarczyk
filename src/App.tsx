@@ -8,18 +8,17 @@ import Form from './Form';
 import LoginSection from './LoginSection';
 import NavSection from './NavSection';
 import './App.css';
-import { polygon2 } from './assets/polygon2';
 
 const App = () => {
   const [key, setKey] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loginState, setLoginState] = useState("not logged in");
+  const [secondary, setSecondary] = useState([]);
+
   const secondaryRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    console.log(key);
-  }, [key]);
+  useEffect(() => window.scrollTo(0, 0), []);
 
   const handleLogin = (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
@@ -33,7 +32,7 @@ const App = () => {
 
   const handleSecondary = (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
-    getAreasSecondary(key);
+    getAreasSecondary(key, setSecondary);
     secondaryRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -61,12 +60,12 @@ const App = () => {
         </Form>
       </header>
       <section ref={secondaryRef}>
-        <MapContainer center={[18.6, 52.005]} zoom={12} scrollWheelZoom={false}>
+        <MapContainer center={[18.6, 52.005]} zoom={15} scrollWheelZoom={false}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
-          <Polygon pathOptions={{ color: 'purple' }} positions={polygon2} />
+          <Polygon pathOptions={{ color: 'purple' }} positions={secondary} />
         </MapContainer>
       </section>
     </div>

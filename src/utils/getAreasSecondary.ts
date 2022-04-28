@@ -1,7 +1,9 @@
+import { postprocessSecondaryData } from "./postprocessSecondaryData";
+
 const apiUrl = process.env.REACT_APP_API_URL;
 const url = `${apiUrl}/areas/secondary`;
 
-export const getAreasSecondary = (key: string) => {
+export const getAreasSecondary = (key: string, setSecondary: any) => {
   fetch(url, {
     method: "GET",
     headers: {
@@ -10,5 +12,6 @@ export const getAreasSecondary = (key: string) => {
     }
   })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => postprocessSecondaryData(data.extent))
+    .then(result => setSecondary(result))
 };
