@@ -1,7 +1,7 @@
 const apiUrl = process.env.REACT_APP_API_URL;
 const url = `${apiUrl}/areas/data`;
 
-export const getAreasData = (key: string) => {
+export const getAreasData = (key: string, setAreasData: any) => {
   fetch(url, {
     method: "GET",
     headers: {
@@ -10,5 +10,5 @@ export const getAreasData = (key: string) => {
     }
   })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => setAreasData(data.data))
 };

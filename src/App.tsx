@@ -4,22 +4,27 @@ import { getCredentials } from './utils/getCredentials';
 import { getAreasSecondary } from './utils/getAreasSecondary';
 import { getAreasData } from './utils/getAreasData';
 import { MapContainer, Polygon, TileLayer } from 'react-leaflet';
+import Plot from 'react-plotly.js';
 import Form from './Form';
 import LoginSection from './LoginSection';
 import NavSection from './NavSection';
+import Section from './Section';
 import './App.css';
-import Placeholder from './Placeholder';
 
 const App = () => {
   const [key, setKey] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loginState, setLoginState] = useState("not logged in");
+
   const [secondary, setSecondary] = useState([]);
   const [viewCenter, setViewCenter]: [any, React.Dispatch<React.SetStateAction<number[]>>] = useState([0, 0]);
   const [secondaryState, setSecondaryState] = useState("idle");
 
+  const [areasData, setAreasData] = useState([]);
+
   const secondaryRef = useRef<HTMLElement>(null);
+  const dataRef = useRef<HTMLElement>(null);
 
   useEffect(() => window.scrollTo(0, 0), []);
 
@@ -41,7 +46,8 @@ const App = () => {
 
   const handleData = (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
-    getAreasData(key);
+    getAreasData(key, setAreasData);
+    dataRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -62,7 +68,7 @@ const App = () => {
           />
         </Form>
       </header>
-      <section ref={secondaryRef}>
+      <Section sectionRef={secondaryRef}>
         {secondaryState === "ready" ?
           <MapContainer center={viewCenter} zoom={15} scrollWheelZoom={false}>
             <TileLayer
@@ -71,9 +77,20 @@ const App = () => {
             />
             <Polygon pathOptions={{ color: 'purple' }} positions={secondary} />
           </MapContainer> :
-          <Placeholder message={secondaryState} />
+          <h2>{secondaryState}</h2>
         }
-      </section>
+      </Section>
+      <Section sectionRef={dataRef}>
+        <Plot
+          data={[
+            {
+              z: areasData,
+              type: 'heatmap'
+            }
+          ]}
+          layout={{ width: 640, height: 480, title: "GET /areas/data" }}
+        />
+      </Section>
     </div>
   );
 }
