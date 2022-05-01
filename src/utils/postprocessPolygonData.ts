@@ -1,4 +1,4 @@
-export const postprocessSecondaryData = (dataString: string) => {
+export const postprocessPolygonData = (dataString: string) => {
   const trimmed = dataString?.replace(/SRID=4326;POLYGON \(\(/, "").replace(/\)\)/, "");
 
   const roughed = trimmed.split(', ');

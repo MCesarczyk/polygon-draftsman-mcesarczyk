@@ -1,6 +1,6 @@
 import { API_URL } from "../assets/variables";
 import { findViewCenter } from "./findViewCenter";
-import { postprocessSecondaryData } from "./postprocessSecondaryData";
+import { postprocessPolygonData } from "./postprocessPolygonData";
 
 const apiUrl = API_URL;
 const url = `${apiUrl}/areas/secondary`;
@@ -8,7 +8,7 @@ const url = `${apiUrl}/areas/secondary`;
 export const getAreasSecondary = async (
   key: string,
   setSecondary: any,
-  setViewCenter: any,
+  setSecondaryCenter: any,
   setSecondaryState: any
 ) => {
   try {
@@ -21,9 +21,9 @@ export const getAreasSecondary = async (
       }
     });
     const data = await response.json();
-    const result = postprocessSecondaryData(data.extent);
+    const result = postprocessPolygonData(data.extent);
     const center = findViewCenter(result);
-    await setViewCenter(center);
+    await setSecondaryCenter(center);
     await setSecondary(result);
     await setSecondaryState("ready");
   } catch (error) {
