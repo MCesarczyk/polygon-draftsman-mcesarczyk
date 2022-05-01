@@ -1,17 +1,18 @@
 import "../Form/style.css";
 
 type navProps = {
+  handlePrimary: any
   handleSecondary: any,
   handleData: any
 }
 
-const NavSection = ({ handleSecondary, handleData }: navProps) => (
+const NavSection = ({ handlePrimary, handleSecondary, handleData }: navProps) => (
   <div className="Form-InnerWrapper">
     <button
       className="App-button"
-      disabled
+      onClick={handlePrimary}
     >
-      get&nbsp;/areas/primary
+      mock&nbsp;/areas/primary
     </button>
     <button
       className="App-button"

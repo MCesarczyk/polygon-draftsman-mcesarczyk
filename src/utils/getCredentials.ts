@@ -11,9 +11,10 @@ export const getCredentials = async (
   try {
     const response = await fetch(url, {
       method: "POST",
+      credentials: "include",
       headers: {
-        "Accept": "*/*",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Origin": "http://127.0.0.1:3000",
       },
       body: JSON.stringify({
         "username": username,
@@ -22,11 +23,12 @@ export const getCredentials = async (
     })
 
     if (!response.ok) {
-      throw new Error;
+      throw new Error();
     }
 
     const data = await response.json();
     setKey(data.key);
+
     setLoginState("logged in");
   } catch (error) {
     setLoginState("login failed");

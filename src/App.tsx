@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { getCredentials } from './utils/getCredentials';
-// import { getAreasPrimary } from './utils/getAreasPrimary';
+import { getAreasPrimary } from './utils/getAreasPrimary';
 import { getAreasSecondary } from './utils/getAreasSecondary';
 import { getAreasData } from './utils/getAreasData';
 import { MapContainer, Polygon, TileLayer } from 'react-leaflet';
@@ -17,33 +17,40 @@ const App = () => {
   const [password, setPassword] = useState('');
   const [loginState, setLoginState] = useState("not logged in");
 
+  const [primary, setPrimary] = useState([]);
+  const [primaryCenter, setPrimaryCenter]: [any, React.Dispatch<React.SetStateAction<number[]>>] = useState([0, 0]);
+  const [primaryState, setPrimaryState] = useState("idle");
+
   const [secondary, setSecondary] = useState([]);
-  const [viewCenter, setViewCenter]: [any, React.Dispatch<React.SetStateAction<number[]>>] = useState([0, 0]);
+  const [secondaryCenter, setSecondaryCenter]: [any, React.Dispatch<React.SetStateAction<number[]>>] = useState([0, 0]);
   const [secondaryState, setSecondaryState] = useState("idle");
 
   const [data, setData] = useState([]);
   const [dataDims, setDataDims] = useState([640, 480])
 
+  const primaryRef = useRef<HTMLElement>(null);
   const secondaryRef = useRef<HTMLElement>(null);
   const dataRef = useRef<HTMLElement>(null);
 
   useEffect(() => window.scrollTo(0, 0), []);
 
-  useEffect(() => setDataDims([window.innerWidth*0.8, window.innerWidth*0.6]), [window.innerWidth]);
+  // eslint-disable-next-line
+  useEffect(() => setDataDims([window.innerWidth * 0.8, window.innerWidth * 0.6]));
 
   const handleLogin = (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
     getCredentials(username, password, setKey, setLoginState);
   };
 
-  // const handlePrimary = (e: React.SyntheticEvent<EventTarget>) => {
-  // e.preventDefault();
-  //   getAreasPrimary();
-  // };
+  const handlePrimary = (e: React.SyntheticEvent<EventTarget>) => {
+    e.preventDefault();
+    getAreasPrimary(setPrimary, setPrimaryCenter, setPrimaryState);
+    primaryRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   const handleSecondary = (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
-    getAreasSecondary(key, setSecondary, setViewCenter, setSecondaryState);
+    getAreasSecondary(key, setSecondary, setSecondaryCenter, setSecondaryState);
     secondaryRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -66,14 +73,27 @@ const App = () => {
             handleLogin={handleLogin}
           />
           <NavSection
+            handlePrimary={handlePrimary}
             handleSecondary={handleSecondary}
             handleData={handleData}
           />
         </Form>
       </header>
+      <Section sectionRef={primaryRef}>
+        {primaryState === "ready" ?
+          <MapContainer center={primaryCenter} zoom={10} scrollWheelZoom={false}>
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            />
+            <Polygon pathOptions={{ color: 'purple' }} positions={primary} />
+          </MapContainer> :
+          <h2>{primaryState}</h2>
+        }
+      </Section>
       <Section sectionRef={secondaryRef}>
         {secondaryState === "ready" ?
-          <MapContainer center={viewCenter} zoom={15} scrollWheelZoom={false}>
+          <MapContainer center={secondaryCenter} zoom={15} scrollWheelZoom={false}>
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
