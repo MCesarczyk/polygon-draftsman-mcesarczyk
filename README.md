@@ -12,6 +12,13 @@ To run app in development mode execute:\
 Runs the app in the development mode.\
 Open [_http://localhost:3000_](http://localhost:3000) to view it in the browser.
 
+Deployed version is available here:\
+_https://mcesarczyk.github.io/polygon-draftsman-mcesarczyk/_
+
+***
+
+## Using app
+
 On first page log in with proper credentials:
 
 ![login page](public/login.png)
