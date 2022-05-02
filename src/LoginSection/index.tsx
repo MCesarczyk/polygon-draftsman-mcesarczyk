@@ -17,6 +17,7 @@ const LoginSection = ({ username, setUsername, password, setPassword, handleLogi
     />
     <input
       placeholder="password"
+      type="password"
       value={password}
       onChange={e => setPassword(e.target.value)}
     />
