@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/polygon-draftsman-mcesarczyk/static/css/main.ae8fbd0a.css",
-    "main.js": "/polygon-draftsman-mcesarczyk/static/js/main.02d3c053.js",
+    "main.js": "/polygon-draftsman-mcesarczyk/static/js/main.656dd7c2.js",
     "static/js/787.b7be9a07.chunk.js": "/polygon-draftsman-mcesarczyk/static/js/787.b7be9a07.chunk.js",
     "index.html": "/polygon-draftsman-mcesarczyk/index.html",
     "main.ae8fbd0a.css.map": "/polygon-draftsman-mcesarczyk/static/css/main.ae8fbd0a.css.map",
-    "main.02d3c053.js.map": "/polygon-draftsman-mcesarczyk/static/js/main.02d3c053.js.map",
+    "main.656dd7c2.js.map": "/polygon-draftsman-mcesarczyk/static/js/main.656dd7c2.js.map",
     "787.b7be9a07.chunk.js.map": "/polygon-draftsman-mcesarczyk/static/js/787.b7be9a07.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ae8fbd0a.css",
-    "static/js/main.02d3c053.js"
+    "static/js/main.656dd7c2.js"
   ]
 }
