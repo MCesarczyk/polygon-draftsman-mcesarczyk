@@ -1,16 +1,15 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyle } from './GlobalStyle';
+import { Normalize } from 'styled-normalize';
+import { standard } from './theme';
+import { MapContainer, Polygon, TileLayer } from 'react-leaflet';
+import Plot from 'react-plotly.js';
 import { getCredentials } from './utils/getCredentials';
 import { getAreasPrimary } from './utils/getAreasPrimary';
 import { getAreasSecondary } from './utils/getAreasSecondary';
 import { getAreasData } from './utils/getAreasData';
-import { MapContainer, Polygon, TileLayer } from 'react-leaflet';
-import Plot from 'react-plotly.js';
 import Section from './Section';
-import './App.css';
-import { GlobalStyle } from './GlobalStyle';
-import { ThemeProvider } from 'styled-components';
-import { Normalize } from 'styled-normalize';
-import { standard } from './theme';
 
 const App = () => {
   const [key, setKey] = useState('');
@@ -55,36 +54,34 @@ const App = () => {
     <ThemeProvider theme={standard}>
       <Normalize />
       <GlobalStyle />
-      <div className="App">
-        <Section>
-          {loginState === "login failed" ? <h2>{loginState}</h2> :
-            loginState === "logged in" && primaryState === "ready" && secondaryState === "ready" ?
-              <MapContainer center={mapCenter} zoom={11} scrollWheelZoom={false}>
-                <TileLayer
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                />
-                <Polygon pathOptions={{ color: 'purple' }} positions={primary} />
-                <Polygon pathOptions={{ color: 'green' }} positions={secondary} />
-              </MapContainer> :
-              <h2>{primaryState}</h2>
-          }
-        </Section>
-        <Section>
-          <Plot
-            data={[{
-              z: data,
-              type: 'heatmap',
-              showscale: false
-            }]}
-            layout={{
-              width: dataDims[0],
-              height: dataDims[1],
-              paper_bgcolor: 'transparent'
-            }}
-          />
-        </Section>
-      </div>
+      <Section>
+        {loginState === "login failed" ? <h2>{loginState}</h2> :
+          loginState === "logged in" && primaryState === "ready" && secondaryState === "ready" ?
+            <MapContainer style={{ width: '100%', height: '100vh' }} center={mapCenter} zoom={11} scrollWheelZoom={false}>
+              <TileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              />
+              <Polygon pathOptions={{ color: 'purple' }} positions={primary} />
+              <Polygon pathOptions={{ color: 'green' }} positions={secondary} />
+            </MapContainer> :
+            <h2>{primaryState}</h2>
+        }
+      </Section>
+      <Section>
+        <Plot
+          data={[{
+            z: data,
+            type: 'heatmap',
+            showscale: false
+          }]}
+          layout={{
+            width: dataDims[0],
+            height: dataDims[1],
+            paper_bgcolor: 'transparent'
+          }}
+        />
+      </Section>
     </ThemeProvider>
   );
 }
