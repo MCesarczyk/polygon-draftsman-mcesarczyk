@@ -3,8 +3,8 @@ import { API_URL } from "../assets/variables";
 const url = `${API_URL}/users/login/`;
 
 export const getCredentials = async (
-  username: string,
-  password: string,
+  username: string | undefined,
+  password: string | undefined,
   setKey: (key: string) => void,
   setLoginState: (key: string) => void
 ) => {
