@@ -9,7 +9,8 @@ declare module 'styled-components' {
       background: string,
       appBarBackground: string,
       selectButtonBackground: string,
-      selectDropdownBackground: string
+      selectDropdownBackground: string,
+      enlight: string
     },
     breakpoint: {
       mobileMin: string,

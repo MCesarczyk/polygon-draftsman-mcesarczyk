@@ -8,7 +8,8 @@ export const standard: DefaultTheme = {
     background: '#383434',
     appBarBackground: 'rgba(182, 114, 47, 0.8)',
     selectButtonBackground: 'rgba(255, 255, 255, 0.06)',
-    selectDropdownBackground: '#403B37'
+    selectDropdownBackground: '#403B37',
+    enlight: 'rgba(255,255,255,0.2)'
   },
   breakpoint: {
     mobileMin: '375px',

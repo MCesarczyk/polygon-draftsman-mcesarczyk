@@ -1,7 +1,10 @@
+import Menu from "./Menu";
 import { AppBarBody } from "./styled";
 
 const AppBar = () => (
-  <AppBarBody></AppBarBody>
+  <AppBarBody>
+    <Menu />
+  </AppBarBody>
 );
 
 export default AppBar;
