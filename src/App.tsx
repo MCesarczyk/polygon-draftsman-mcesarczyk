@@ -9,7 +9,7 @@ import { getCredentials } from './utils/getCredentials';
 import { getAreasPrimary } from './utils/getAreasPrimary';
 import { getAreasSecondary } from './utils/getAreasSecondary';
 import { getAreasData } from './utils/getAreasData';
-import Section from './Section';
+import Section from './components/Section';
 import Heading from './components/Heading';
 
 const App = () => {
@@ -39,7 +39,7 @@ const App = () => {
   }, []);
 
   // eslint-disable-next-line
-  useEffect(() => setDataDims([window.innerWidth * 0.96, window.innerWidth * 0.72]));
+  useEffect(() => setDataDims([window.innerWidth * 0.84, window.innerWidth * 0.63]));
 
   const fetchInitialData = useCallback(() => {
     getAreasPrimary(setPrimary, setPrimaryCenter, setPrimaryState);
@@ -56,7 +56,7 @@ const App = () => {
       <Normalize />
       <GlobalStyle />
       <Heading />
-      <Section>
+      <Section title="Water area detection">
         {loginState === "login failed" ? <h2>{loginState}</h2> :
           loginState === "logged in" && primaryState === "ready" && secondaryState === "ready" ?
             <MapContainer style={{ width: '100%', height: '100vh' }} center={mapCenter} zoom={11} scrollWheelZoom={false}>
@@ -70,7 +70,7 @@ const App = () => {
             <h2>{primaryState}</h2>
         }
       </Section>
-      <Section>
+      <Section title="Chlorophyll">
         <Plot
           data={[{
             z: data,
