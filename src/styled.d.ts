@@ -7,6 +7,7 @@ declare module 'styled-components' {
       primaryText: string,
       secondaryText: string,
       background: string,
+      appBarBackground: string,
       selectButtonBackground: string,
       selectDropdownBackground: string
     },

@@ -6,6 +6,7 @@ export const standard: DefaultTheme = {
     primaryText: '#FFF',
     secondaryText: '#CF9F68',
     background: '#383434',
+    appBarBackground: 'rgba(182, 114, 47, 0.8)',
     selectButtonBackground: 'rgba(255, 255, 255, 0.06)',
     selectDropdownBackground: '#403B37'
   },

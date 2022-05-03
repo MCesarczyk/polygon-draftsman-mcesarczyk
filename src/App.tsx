@@ -10,6 +10,7 @@ import { getAreasPrimary } from './utils/getAreasPrimary';
 import { getAreasSecondary } from './utils/getAreasSecondary';
 import { getAreasData } from './utils/getAreasData';
 import Section from './Section';
+import Heading from './components/Heading';
 
 const App = () => {
   const [key, setKey] = useState('');
@@ -54,6 +55,7 @@ const App = () => {
     <ThemeProvider theme={standard}>
       <Normalize />
       <GlobalStyle />
+      <Heading />
       <Section>
         {loginState === "login failed" ? <h2>{loginState}</h2> :
           loginState === "logged in" && primaryState === "ready" && secondaryState === "ready" ?
