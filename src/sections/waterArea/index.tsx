@@ -5,6 +5,7 @@ import { getAreasSecondary } from "../../utils/getAreasSecondary";
 import Section from "../../components/Section";
 import Select from "../../components/Select";
 import { ButtonSection, WaterAreaWrapper } from "./styled";
+import Placeholder from "../../components/Placeholder";
 
 type waterAreaTypes = {
   loginState: string,
@@ -29,16 +30,16 @@ const WaterArea = ({ loginState, token }: waterAreaTypes) => {
         <ButtonSection>
           <Select chosenMap={chosenMap} setChosenMap={setChosenMap} />
         </ButtonSection>
-        {loginState === "login failed" ? <h2>{loginState}</h2> :
+        {loginState === "login failed" ? <Placeholder text={loginState} /> :
           loginState === "logged in" && state === "ready" ?
-            <MapContainer style={{ width: '100%', height: '100vh' }} center={center} zoom={11} scrollWheelZoom={false}>
+            <MapContainer style={{ width: '100%', height: '560px' }} center={center} zoom={11} scrollWheelZoom={false}>
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               />
               <Polygon pathOptions={{ color: 'purple' }} positions={data} />
             </MapContainer> :
-            <h2>{state}</h2>
+            <Placeholder text={state} />
         }
       </WaterAreaWrapper>
     </Section>
