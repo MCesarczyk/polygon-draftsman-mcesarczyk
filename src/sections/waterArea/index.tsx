@@ -1,5 +1,6 @@
 import { MapContainer, Polygon, TileLayer } from "react-leaflet";
 import Section from "../../components/Section";
+import Select from "../../components/Select";
 import { ButtonSection, WaterAreaWrapper } from "./styled";
 
 type waterAreaTypes = {
@@ -14,6 +15,9 @@ type waterAreaTypes = {
 const WaterArea = ({ loginState, primaryState, secondaryState, mapCenter, primary, secondary }: waterAreaTypes) => (
   <Section title="Water area detection">
     <WaterAreaWrapper>
+      <ButtonSection>
+        <Select text="Primary area" />
+      </ButtonSection>
       {loginState === "login failed" ? <h2>{loginState}</h2> :
         loginState === "logged in" && primaryState === "ready" && secondaryState === "ready" ?
           <MapContainer style={{ width: '100%', height: '100vh' }} center={mapCenter} zoom={11} scrollWheelZoom={false}>
