@@ -1,26 +1,45 @@
 import { useState } from "react";
-import { Arrow, Button, Dropdown } from "./styled";
+import { Arrow, Button, Dropdown, DropdownOption, SelectWrapper } from "./styled";
 import { ReactComponent as ArrowDown } from "../../assets/graphics/arrow_down.svg";
 import { ReactComponent as ArrowUp } from "../../assets/graphics/arrow_up.svg";
+import { waterAreaOptions } from "../../assets/waterAreaOptions";
 
 type buttonProps = {
-  text: string
+  chosenMap: string,
+  setChosenMap: any
 }
 
-const Select = ({ text }: buttonProps) => {
+const Select = ({ chosenMap, setChosenMap }: buttonProps) => {
   const [open, setOpen] = useState(false);
+
+  const chosenOption = waterAreaOptions.filter(({ value }) => value === chosenMap);
+  const chosenOptionLabel = chosenOption[0].label;
+  const otherOptions = waterAreaOptions.filter(({ value }) => value !== chosenMap);
+
+  const handleOptionClick = (value: string) => {
+    setChosenMap(value);
+    setOpen(false);
+  };
+
   return (
-    <>
-      <Dropdown hidden={open === false} onClick={() => setOpen(false)}>
-        lorem ipsum
-      </Dropdown>
+    <SelectWrapper>
       <Button onClick={() => setOpen(!open)}>
-        {text}
+        {chosenOptionLabel}
         <Arrow>
           {open === false ? <ArrowDown /> : <ArrowUp />}
         </Arrow>
       </Button>
-    </>
+      <Dropdown hidden={open === false}>
+        {otherOptions.map(item => (
+          <DropdownOption
+            key={item.id}
+            onClick={() => handleOptionClick(item.value)}
+          >
+            {item.label}
+          </DropdownOption>
+        ))}
+      </Dropdown>
+    </SelectWrapper>
   )
 };
 
