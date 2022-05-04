@@ -1,15 +1,23 @@
 {
   "files": {
-    "main.css": "/polygon-draftsman-mcesarczyk/static/css/main.ae8fbd0a.css",
-    "main.js": "/polygon-draftsman-mcesarczyk/static/js/main.656dd7c2.js",
+    "main.js": "/polygon-draftsman-mcesarczyk/static/js/main.a3653aa9.js",
     "static/js/787.b7be9a07.chunk.js": "/polygon-draftsman-mcesarczyk/static/js/787.b7be9a07.chunk.js",
+    "static/media/backdrop.jpg": "/polygon-draftsman-mcesarczyk/static/media/backdrop.3a43a047da80f0008d53.jpg",
+    "static/media/mine.jpg": "/polygon-draftsman-mcesarczyk/static/media/mine.01bb4e147bc5ff3f352c.jpg",
+    "static/media/satellite.jpg": "/polygon-draftsman-mcesarczyk/static/media/satellite.7fe4d44c2684a4335158.jpg",
+    "static/media/data_lib.svg": "/polygon-draftsman-mcesarczyk/static/media/data_lib.cae84a99bfa3910b2f4c0768cc8f6797.svg",
+    "static/media/rsom_logo_big.svg": "/polygon-draftsman-mcesarczyk/static/media/rsom_logo_big.6894975b362e3cabcbea8503ba8213fe.svg",
+    "static/media/social_env.svg": "/polygon-draftsman-mcesarczyk/static/media/social_env.a4d945ecc554899ebb57281ac781bb77.svg",
+    "static/media/diy_ai.svg": "/polygon-draftsman-mcesarczyk/static/media/diy_ai.ca5820462e2bec77a0dc6148431416e8.svg",
+    "static/media/rsom_logo.svg": "/polygon-draftsman-mcesarczyk/static/media/rsom_logo.09c75d7918ff1924c769e8a5d6907695.svg",
+    "static/media/increase_prod.svg": "/polygon-draftsman-mcesarczyk/static/media/increase_prod.8c16fb47fa13705d648426b19852bb17.svg",
     "index.html": "/polygon-draftsman-mcesarczyk/index.html",
-    "main.ae8fbd0a.css.map": "/polygon-draftsman-mcesarczyk/static/css/main.ae8fbd0a.css.map",
-    "main.656dd7c2.js.map": "/polygon-draftsman-mcesarczyk/static/js/main.656dd7c2.js.map",
+    "static/media/arrow_down.svg": "/polygon-draftsman-mcesarczyk/static/media/arrow_down.0c5805298f8237511810fc7112a585f9.svg",
+    "static/media/arrow_up.svg": "/polygon-draftsman-mcesarczyk/static/media/arrow_up.eecc6e6af3db69702a35d49c96b5f212.svg",
+    "main.a3653aa9.js.map": "/polygon-draftsman-mcesarczyk/static/js/main.a3653aa9.js.map",
     "787.b7be9a07.chunk.js.map": "/polygon-draftsman-mcesarczyk/static/js/787.b7be9a07.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ae8fbd0a.css",
-    "static/js/main.656dd7c2.js"
+    "static/js/main.a3653aa9.js"
   ]
 }
