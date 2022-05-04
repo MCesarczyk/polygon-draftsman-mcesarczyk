@@ -12,6 +12,7 @@ import { getAreasData } from './utils/getAreasData';
 import Section from './components/Section';
 import Heading from './components/Heading';
 import Description from './sections/description';
+import Advantages from './sections/advantages';
 
 const App = () => {
   const [key, setKey] = useState('');
@@ -58,9 +59,7 @@ const App = () => {
       <GlobalStyle />
       <Heading />
       <Description />
-      <Section title="Advantages of RSOM">
-        <></>
-      </Section>
+      <Advantages />
       <Section title="Water area detection">
         {loginState === "login failed" ? <h2>{loginState}</h2> :
           loginState === "logged in" && primaryState === "ready" && secondaryState === "ready" ?
