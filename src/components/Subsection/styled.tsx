@@ -57,10 +57,14 @@ export const SubsectionList = styled.ul`
   line-height: 1.57;
   margin-top: 4px;
   margin-bottom: 0;
-  padding-left: 36px;
+  padding-left: 1.5em;
+  list-style-type: disc;
+  
+  li::marker {
+    font-size: 0.66em;
+  }
 
   @media(max-width: ${({ theme }) => theme.breakpoint.tabletMax}){
     line-height: 1.33;
-    padding-left: 32px;
   }
 `
