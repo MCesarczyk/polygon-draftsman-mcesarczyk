@@ -21,7 +21,7 @@ export const getAreasSecondary = async (
       }
     });
     const data = await response.json();
-    const result = postprocessPolygonData(data.extent);
+    const result = postprocessPolygonData(data.extent);    
     const center = findViewCenter(result);
     await setSecondaryCenter(center);
     await setSecondary(result);

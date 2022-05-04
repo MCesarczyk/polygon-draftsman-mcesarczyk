@@ -1,4 +1,4 @@
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './GlobalStyle';
 import { Normalize } from 'styled-normalize';
@@ -11,13 +11,17 @@ import Heading from './components/Heading';
 import Description from './sections/description';
 import Advantages from './sections/advantages';
 import WaterArea from './sections/waterArea';
+import Chlorophyll from './sections/chlorophyll';
 
 const App = () => {
   const [token, setToken] = useState('');
   const [loginState, setLoginState] = useState("not logged in");
 
   const [data, setData] = useState([]);
-  const [dataDims, setDataDims] = useState([640, 480])
+  const [dataDims, setDataDims] = useState([640, 480]);
+  const [boundary, setBoundary] = useState([]);
+  const [center, setCenter] = useState([]);
+  const [state, setState] = useState("idle");
 
   useEffect(() => {
     getCredentials(
@@ -32,7 +36,7 @@ const App = () => {
   useEffect(() => setDataDims([window.innerWidth * 0.84, window.innerWidth * 0.63]));
 
   useEffect(() => {
-    token && getAreasData(token, setData);
+    token && getAreasData(token, setData, setBoundary, setCenter, setState);
   }, [token]);
 
   return (
@@ -43,6 +47,10 @@ const App = () => {
       <Description />
       <Advantages />
       <WaterArea
+        loginState={loginState}
+        token={token}
+      />
+      <Chlorophyll
         loginState={loginState}
         token={token}
       />
