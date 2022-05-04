@@ -30,10 +30,6 @@ button {
   cursor: pointer;
 }
 
-ul, ol {
-  list-style: none;
-}
-
 a {
   text-decoration: none;
   color: currentColor;

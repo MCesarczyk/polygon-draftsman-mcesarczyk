@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const SectionWrapper = styled.section`
-  padding: 96px 80px;
+  padding: 0 80px;
 
   @media(max-width: ${({ theme }) => theme.breakpoint.tabletMax}){
-    padding: 40px 60px;
+    padding: 0 44px;
   }
   
   @media(max-width: ${({ theme }) => theme.breakpoint.mobileMax}){
-    padding: 44px 60px;
+    padding: 0 40px;
   }
 `
 
@@ -20,6 +20,7 @@ export const SectionTitle = styled.h2`
   text-transform: uppercase;
   border-bottom: 1px solid currentColor;
   padding-bottom: 32px;
+  margin: 0;
   margin-bottom: 32px;
 
   @media(max-width: ${({ theme }) => theme.breakpoint.tabletMax}){

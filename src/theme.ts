@@ -12,9 +12,9 @@ export const standard: DefaultTheme = {
     enlight: 'rgba(255,255,255,0.2)'
   },
   breakpoint: {
-    mobileMin: '375px',
-    mobileMax: '768px',
-    tabletMax: '1440px',
+    mobileMin: '374px',
+    mobileMax: '767px',
+    tabletMax: '1439px',
     desktopMax: '2400px'
   },
   font: {

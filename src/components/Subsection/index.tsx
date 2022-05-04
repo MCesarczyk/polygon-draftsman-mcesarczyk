@@ -9,7 +9,9 @@ type subsectionProps = {
 const Subsection = ({ reversed, image, children }: subsectionProps) => (
   <SubsectionWrapper reversed={reversed}>
     <SubsectionImage reversed={reversed} src={image} />
-    {children}
+    <div>
+      {children}
+    </div>
   </SubsectionWrapper>
 );
 
