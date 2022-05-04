@@ -13,6 +13,7 @@ import Section from './components/Section';
 import Heading from './components/Heading';
 import Description from './sections/description';
 import Advantages from './sections/advantages';
+import WaterArea from './sections/waterArea';
 
 const App = () => {
   const [key, setKey] = useState('');
@@ -60,20 +61,14 @@ const App = () => {
       <Heading />
       <Description />
       <Advantages />
-      <Section title="Water area detection">
-        {loginState === "login failed" ? <h2>{loginState}</h2> :
-          loginState === "logged in" && primaryState === "ready" && secondaryState === "ready" ?
-            <MapContainer style={{ width: '100%', height: '100vh' }} center={mapCenter} zoom={11} scrollWheelZoom={false}>
-              <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              />
-              <Polygon pathOptions={{ color: 'purple' }} positions={primary} />
-              <Polygon pathOptions={{ color: 'green' }} positions={secondary} />
-            </MapContainer> :
-            <h2>{primaryState}</h2>
-        }
-      </Section>
+      <WaterArea
+          loginState={loginState}
+          primaryState={primaryState}
+          secondaryState={secondaryState}
+          mapCenter={mapCenter}
+          primary={primary}
+          secondary={secondary}
+      />
       <Section title="Chlorophyll">
         <Plot
           data={[{
