@@ -10,5 +10,6 @@ export const ButtonSection = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  margin-top: 30px;
   margin-bottom: 30px;
 `

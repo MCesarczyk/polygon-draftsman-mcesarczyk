@@ -1,8 +1,7 @@
-import { icon } from "leaflet";
 import { advantages } from "../../assets/advantages";
 import Section from "../../components/Section";
-import { Subtitle } from "../../components/Subtitle/styled";
 import Item from "./Item";
+import { Subtitle } from "../../components/Subtitle/styled";
 import { AdvantagesTitleWrapper, DataGrid } from "./styled";
 
 const Advantages = () => (
