@@ -7,12 +7,13 @@ import { getCredentials } from './utils/getCredentials';
 import Heading from './components/Heading';
 import Description from './sections/description';
 import Advantages from './sections/advantages';
-import WaterArea from './sections/waterArea';
-import Chlorophyll from './sections/chlorophyll';
+import GeorasterTest from './sections/georasterTest';
 
 const App = () => {
   const [token, setToken] = useState('');
   const [loginState, setLoginState] = useState("not logged in");
+
+  useEffect(() => console.log(token), [token]);
 
   useEffect(() => {
     getCredentials(
@@ -30,11 +31,7 @@ const App = () => {
       <Heading />
       <Description />
       <Advantages />
-      <WaterArea
-        loginState={loginState}
-        token={token}
-      />
-      <Chlorophyll
+      <GeorasterTest
         loginState={loginState}
         token={token}
       />
