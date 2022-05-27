@@ -4,8 +4,10 @@ import { getAreasPrimary } from "../../utils/getAreasPrimary";
 import { getAreasSecondary } from "../../utils/getAreasSecondary";
 import Section from "../../components/Section";
 import Select from "../../components/Select";
-import { ButtonSection, WaterAreaWrapper } from "./styled";
 import Placeholder from "../../components/Placeholder";
+import { ButtonSection } from "../../components/ButtonSection/styled";
+import { LeafletMapWrapper } from "../../components/LeafletMapWrapper/styled";
+import { waterAreaOptions } from "../../assets/waterAreaOptions";
 
 type waterAreaTypes = {
   loginState: string,
@@ -26,9 +28,13 @@ const WaterArea = ({ loginState, token }: waterAreaTypes) => {
 
   return (
     <Section title="Water area detection">
-      <WaterAreaWrapper>
+      <LeafletMapWrapper>
         <ButtonSection>
-          <Select chosenMap={chosenMap} setChosenMap={setChosenMap} />
+          <Select
+            chosenOption={chosenMap}
+            setChosenOption={setChosenMap}
+            availableOptions={waterAreaOptions}
+          />
         </ButtonSection>
         {loginState === "login failed" ? <Placeholder text={loginState} /> :
           loginState === "logged in" && state === "ready" ?
@@ -41,7 +47,7 @@ const WaterArea = ({ loginState, token }: waterAreaTypes) => {
             </MapContainer> :
             <Placeholder text={state} />
         }
-      </WaterAreaWrapper>
+      </LeafletMapWrapper>
     </Section>
   )
 };
