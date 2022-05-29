@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Input = styled.input`
   display: block;
-  width: 300px;
+  width: 100px;
   height: 40px;
   border-radius: 20px;
   padding: 0 25px;
@@ -13,10 +13,6 @@ export const Input = styled.input`
   border: 1px solid currentColor;
   transition: all 0.3s ease-out;
   z-index: 600;
-  
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}) {
-        width: 100%;
-    }
 
   &:hover {
     background-color: ${({ theme }) => theme.color.enlight};
@@ -27,11 +23,17 @@ export const Input = styled.input`
   }
 `
 
-export const FileInputWrapper = styled.div`
-    margin-right: auto;
+export const Label = styled.label`
+  margin-right: 1rem;
+  width: 100px;
+`
+
+export const InputWrapper = styled.div`
+    display: flex;
+    align-items: center;
     margin-bottom: 0.5rem;
-    
-    @media (max-width: ${({theme})=>theme.breakpoint.mobileMax}) {
-        margin-right: unset;
+
+    @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}) {
+        justify-content: space-between;
     }
 `

@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Arrow, Button, Dropdown, DropdownOption, SelectWrapper } from "./styled";
+import { Arrow, Dropdown, DropdownOption, SelectWrapper } from "./styled";
 import { ReactComponent as ArrowDown } from "../../assets/graphics/arrow_down.svg";
 import { ReactComponent as ArrowUp } from "../../assets/graphics/arrow_up.svg";
+import { Button } from "../Button/styled";
 
 type selectProps = {
   chosenOption: string,

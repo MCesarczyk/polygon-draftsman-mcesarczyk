@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
-export const Input = styled.input`
+export const Button = styled.button`
   display: block;
+  position: relative;
+  top: 0px;
+  left: 0px;
   width: 300px;
   height: 40px;
   border-radius: 20px;
@@ -11,10 +14,13 @@ export const Input = styled.input`
   font-weight: ${({ theme }) => theme.fontWeight.semiBold};
   font-size: 14px;
   border: 1px solid currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   transition: all 0.3s ease-out;
   z-index: 600;
   
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}) {
+  @media (max-width: ${({theme})=>theme.breakpoint.mobileMax}) {
         width: 100%;
     }
 
@@ -25,13 +31,4 @@ export const Input = styled.input`
   &:active {
     background-color: unset;
   }
-`
-
-export const FileInputWrapper = styled.div`
-    margin-right: auto;
-    margin-bottom: 0.5rem;
-    
-    @media (max-width: ${({theme})=>theme.breakpoint.mobileMax}) {
-        margin-right: unset;
-    }
 `
