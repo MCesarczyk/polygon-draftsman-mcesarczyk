@@ -6,6 +6,7 @@ import Select from "../../components/Select";
 import { LeafletMapWrapper } from "../../components/LeafletMapWrapper/styled";
 import { ButtonSection } from "../../components/ButtonSection/styled";
 import { georasterTestOptions } from "../../assets/georasterTestOptions";
+import FileInput from "../../components/FileInput";
 const parse_georaster = require("georaster");
 
 type waterAreaTypes = {
@@ -58,10 +59,7 @@ const GeorasterTest = ({ mapRef }: waterAreaTypes) => {
     <Section title="Georaster test">
       <LeafletMapWrapper ref={mapRef}>
         <ButtonSection>
-          <input
-            type='file'
-            id="geotiff-file"
-          />
+          <FileInput />
           <Select
             chosenOption={chosenMap}
             setChosenOption={setChosenMap}
