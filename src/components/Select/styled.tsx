@@ -1,10 +1,12 @@
 import styled, { css } from "styled-components";
 
 export const SelectWrapper = styled.div`
-  width: 300px;
+  width: 150px;
   height: 40px;
   position: relative;
   z-index: 500;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
   
   @media (max-width: ${({theme})=>theme.breakpoint.mobileMax}) {
         width: 100%;
@@ -20,7 +22,7 @@ export const Dropdown = styled.ul`
   position: relative;
   top: -40px;
   left: 0px;
-  width: 300px;
+  width: 150px;
   min-height: 88px;
   border-radius: 20px;
   padding-top: 40px;
