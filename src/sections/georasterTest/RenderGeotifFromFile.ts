@@ -3,25 +3,14 @@ import GeoRasterLayer from "georaster-layer-for-leaflet";
 const parse_georaster = require("georaster");
 
 interface props {
+  file: any,
   opacity: number,
   resolution: number
 }
 
-export const RenderGeotifFromFile = ({ opacity, resolution }: props) => {
+export const RenderGeotifFromFile = ({ file, opacity, resolution }: props) => {
   const map = useMap();
   console.log("Map: ", map);
-
-  if (document === null) {
-    return null;
-  } else {
-    document.getElementById("geotiff-file")!.addEventListener("change", event => {
-      if (event === null || event.target === null) {
-        return null;
-      } else {
-        //@ts-ignore
-        const file = event.target.files[0];
-        console.log("File: ", file);
-
         var reader = new FileReader();
         reader.readAsArrayBuffer(file);
         reader.onloadend = function () {
@@ -40,8 +29,5 @@ export const RenderGeotifFromFile = ({ opacity, resolution }: props) => {
             map.fitBounds(layer.getBounds());
           });
         };
-      };
-    });
-  }
   return null;
 };

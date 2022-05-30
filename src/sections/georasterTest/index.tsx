@@ -10,6 +10,7 @@ import NumberInput from "../../components/NumberInput";
 import { ButtonsWrapper, ControlsWrapper, DownloadButtonsWrapper, InputsWrapper } from "./styled";
 import { RenderGeotifFromAPI } from "./RenderGeotifFromAPI";
 import { Button } from "../../components/Button/styled";
+import { getAPIData } from "../../utils/getAPIData";
 
 type waterAreaTypes = {
   mapRef: any
@@ -18,6 +19,7 @@ type waterAreaTypes = {
 const GeorasterTest = ({ mapRef }: waterAreaTypes) => {
   const [chosenMap, setChosenMap] = useState("cog");
   const [apiUrl, setApiUrl] = useState('');
+  const [file, setFile] = useState(undefined);
   const [opacity, setOpacity] = useState(0.7);
   const [resolution, setResolution] = useState(256);
 
@@ -27,11 +29,19 @@ const GeorasterTest = ({ mapRef }: waterAreaTypes) => {
   useEffect(() => {
     chosenMap === "cog" && cogUrl !== undefined && setApiUrl(cogUrl);
     chosenMap === "not_cog" && notCogUrl !== undefined && setApiUrl(notCogUrl);
-  }, [chosenMap, cogUrl, notCogUrl])
+  }, [chosenMap, cogUrl, notCogUrl]);
+
+  const fetchGeoTiff = () => {
+    getAPIData(apiUrl, setFile);
+  };
 
   useEffect(() => {
     console.log('apiUrl: ', apiUrl);
   }, [apiUrl]);
+
+  useEffect(() => {
+    console.log(file);
+  }, [file]);
 
   return (
     <Section title="Georaster test">
@@ -52,14 +62,14 @@ const GeorasterTest = ({ mapRef }: waterAreaTypes) => {
             />
           </InputsWrapper>
           <ButtonsWrapper>
-            <FileInput />
+            <FileInput setFile={(e: any) => setFile(e.target.files[0])} />
             <DownloadButtonsWrapper>
               <Select
                 chosenOption={chosenMap}
                 setChosenOption={setChosenMap}
                 availableOptions={georasterTestOptions}
               />
-              <Button>
+              <Button onClick={fetchGeoTiff}>
                 Download
               </Button>
             </DownloadButtonsWrapper>
@@ -70,8 +80,8 @@ const GeorasterTest = ({ mapRef }: waterAreaTypes) => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
-          <RenderGeotifFromFile opacity={opacity} resolution={resolution} />
-          <RenderGeotifFromAPI file={undefined} opacity={opacity} resolution={resolution} />
+          {file && <RenderGeotifFromFile opacity={opacity} resolution={resolution} file={file} />}
+          {/* <RenderGeotifFromAPI file={file} opacity={opacity} resolution={resolution} /> */}
         </MapContainer>
       </LeafletMapWrapper>
     </Section>
