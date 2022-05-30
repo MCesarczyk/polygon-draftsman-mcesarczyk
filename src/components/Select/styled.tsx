@@ -22,7 +22,7 @@ export const Dropdown = styled.ul`
   position: relative;
   top: -40px;
   left: 0px;
-  width: 150px;
+  width: 300px;
   min-height: 88px;
   border-radius: 20px;
   padding-top: 40px;

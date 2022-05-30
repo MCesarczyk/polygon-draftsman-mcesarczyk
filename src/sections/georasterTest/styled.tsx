@@ -20,6 +20,6 @@ export const ButtonsWrapper = styled.div`
     flex-direction: column;
 `
 
-export const DownloadButtonsWrapper = styled.div`
+export const ButtonsRowWrapper = styled.div`
     display: flex;
 `

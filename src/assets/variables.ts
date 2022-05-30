@@ -1,1 +1,2 @@
-export const API_URL = "https://rsom-recruitment.azurewebsites.net";
+export const API_URL = "https://app-rsom-backend.azurewebsites.net";
+export const EXAMPLE_GEOTIF_URL = "https://storage.googleapis.com/pdd-stac/disasters/hurricane-harvey/0831/20170831_172754_101c_3b_Visual.tif";
