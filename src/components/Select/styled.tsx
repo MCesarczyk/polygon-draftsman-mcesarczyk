@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const SelectWrapper = styled.div`
-  width: 150px;
+  width: 300px;
   height: 40px;
   position: relative;
   z-index: 500;

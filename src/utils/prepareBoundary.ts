@@ -7,10 +7,10 @@ interface Points {
 
 export const prepareBoundary = (points: Points) => {
   return [
-    [points.left, points.top],
-    [points.right, points.top],
-    [points.right, points.bottom],
-    [points.left, points.bottom],
-    [points.left, points.top]
+    [points.top, points.left],
+    [points.top, points.right],
+    [points.bottom, points.right],
+    [points.bottom, points.left],
+    [points.top, points.left]
   ];
 };

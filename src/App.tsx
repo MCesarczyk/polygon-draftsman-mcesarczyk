@@ -7,13 +7,14 @@ import Heading from './components/Heading';
 import Description from './sections/description';
 import Advantages from './sections/advantages';
 import GeorasterTest from './sections/georasterTest';
+import GeoJSONTest from './sections/geoJsonTest';
 
 const App = () => {
-  const mapRef = useRef<HTMLDivElement>(null);
+  const geoJSONRef = useRef<HTMLDivElement>(null);
 
   const scrollToMap = () => {
-    if (mapRef.current !== null) {
-      mapRef.current.scrollIntoView({ behavior: 'smooth' });
+    if (geoJSONRef.current !== null) {
+      geoJSONRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -28,7 +29,8 @@ const App = () => {
       <Heading />
       <Description />
       <Advantages />
-      <GeorasterTest mapRef={mapRef} />
+      <GeorasterTest mapRef={undefined} />
+      <GeoJSONTest mapRef={geoJSONRef} />
     </ThemeProvider>
   );
 }
