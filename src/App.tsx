@@ -29,7 +29,7 @@ const App = () => {
       <Heading />
       <Description />
       <Advantages />
-      <GeorasterTest mapRef={undefined} />
+      {/* <GeorasterTest mapRef={undefined} /> */}
       <GeoJSONTest mapRef={geoJSONRef} />
     </ThemeProvider>
   );

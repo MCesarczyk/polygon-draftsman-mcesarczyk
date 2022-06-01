@@ -5,6 +5,8 @@ import { RenderGeotifFromFile } from "../georasterTest/RenderGeotifFromFile";
 import waterbodyMeta from "../../assets/waterbodyMeta.json";
 import waterbodyRaw from "../../assets/waterbodyRaw.json";
 import { prepareBoundary } from "../../utils/prepareBoundary";
+import { RenderGeoJsonFromFile } from "./RenderGeoJsonFromFile";
+import { RenderCircleMarker } from "./RenderCircleMarker";
 
 type waterAreaTypes = {
   mapRef: any
@@ -28,7 +30,9 @@ const GeoJSONTest = ({ mapRef }: waterAreaTypes) => {
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
           <Polygon pathOptions={{color: 'gray'}} positions={boundary} />
-          {/* {file && <RenderGeotifFromFile opacity={opacity} resolution={resolution} file={file} />} */}
+          <RenderGeoJsonFromFile coords={[18.46181950537658, 52.33749093013154]} boundary={waterbodyMeta.boundary_box} waterbody={waterbodyRaw.results} color={"blue"} />
+          <RenderCircleMarker coords={[18.46181950537658, 52.35]} color={"red"} />
+          <RenderCircleMarker coords={[18.5, 52.33749093013154]} color={"green"} />
         </MapContainer>
       </LeafletMapWrapper>
     </Section>
