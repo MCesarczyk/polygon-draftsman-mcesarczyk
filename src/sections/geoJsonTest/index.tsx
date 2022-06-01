@@ -1,12 +1,10 @@
 import { MapContainer, Polygon, TileLayer } from "react-leaflet";
 import Section from "../../components/Section";
 import { LeafletMapWrapper } from "../../components/LeafletMapWrapper/styled";
-import { RenderGeotifFromFile } from "../georasterTest/RenderGeotifFromFile";
 import waterbodyMeta from "../../assets/waterbodyMeta.json";
 import waterbodyRaw from "../../assets/waterbodyRaw.json";
 import { prepareBoundary } from "../../utils/prepareBoundary";
 import { RenderGeoJsonFromFile } from "./RenderGeoJsonFromFile";
-import { RenderCircleMarker } from "./RenderCircleMarker";
 
 type waterAreaTypes = {
   mapRef: any
@@ -19,8 +17,8 @@ const GeoJSONTest = ({ mapRef }: waterAreaTypes) => {
   const centerCoords = waterbodyMeta.center_of_image_coords;
   const center: any = [centerCoords.y, centerCoords.x];
 
-  const boundary: any[] = prepareBoundary(waterbodyMeta.boundary_box);  
-  
+  const boundary: any[] = prepareBoundary(waterbodyMeta.boundary_box);
+
   return (
     <Section title="GeoJSON test">
       <LeafletMapWrapper ref={mapRef}>
@@ -29,10 +27,8 @@ const GeoJSONTest = ({ mapRef }: waterAreaTypes) => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
-          <Polygon pathOptions={{color: 'gray'}} positions={boundary} />
-          <RenderGeoJsonFromFile coords={[18.46181950537658, 52.33749093013154]} boundary={waterbodyMeta.boundary_box} waterbody={waterbodyRaw.results} color={"blue"} />
-          <RenderCircleMarker coords={[18.46181950537658, 52.35]} color={"red"} />
-          <RenderCircleMarker coords={[18.5, 52.33749093013154]} color={"green"} />
+          <Polygon pathOptions={{ color: 'gray' }} positions={boundary} />
+          <RenderGeoJsonFromFile boundary={waterbodyMeta.boundary_box} waterbody={waterbodyRaw.results} />
         </MapContainer>
       </LeafletMapWrapper>
     </Section>
