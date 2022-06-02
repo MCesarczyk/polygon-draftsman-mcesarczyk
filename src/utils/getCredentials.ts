@@ -1,6 +1,6 @@
 import { API_URL } from "../assets/variables";
 
-const url = `${API_URL}/users/login/`;
+const url = `${API_URL}/users/rest-auth/login/`;
 
 export const getCredentials = async (
   username: string | undefined,
@@ -11,10 +11,9 @@ export const getCredentials = async (
   try {
     const response = await fetch(url, {
       method: "POST",
-      credentials: "include",
+      credentials: "same-origin",
       headers: {
         "Content-Type": "application/json",
-        "Origin": "http://127.0.0.1:3000",
       },
       body: JSON.stringify({
         "username": username,
