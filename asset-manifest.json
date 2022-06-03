@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/polygon-draftsman-mcesarczyk/static/js/main.07efe15a.js",
+    "main.js": "/polygon-draftsman-mcesarczyk/static/js/main.ddaaee7a.js",
     "static/js/787.b7be9a07.chunk.js": "/polygon-draftsman-mcesarczyk/static/js/787.b7be9a07.chunk.js",
     "static/media/backdrop.jpg": "/polygon-draftsman-mcesarczyk/static/media/backdrop.3a43a047da80f0008d53.jpg",
     "static/media/mine.jpg": "/polygon-draftsman-mcesarczyk/static/media/mine.01bb4e147bc5ff3f352c.jpg",
@@ -12,10 +12,12 @@
     "static/media/rsom_logo.svg": "/polygon-draftsman-mcesarczyk/static/media/rsom_logo.09c75d7918ff1924c769e8a5d6907695.svg",
     "static/media/increase_prod.svg": "/polygon-draftsman-mcesarczyk/static/media/increase_prod.8c16fb47fa13705d648426b19852bb17.svg",
     "index.html": "/polygon-draftsman-mcesarczyk/index.html",
-    "main.07efe15a.js.map": "/polygon-draftsman-mcesarczyk/static/js/main.07efe15a.js.map",
+    "static/media/arrow_down.svg": "/polygon-draftsman-mcesarczyk/static/media/arrow_down.0c5805298f8237511810fc7112a585f9.svg",
+    "static/media/arrow_up.svg": "/polygon-draftsman-mcesarczyk/static/media/arrow_up.eecc6e6af3db69702a35d49c96b5f212.svg",
+    "main.ddaaee7a.js.map": "/polygon-draftsman-mcesarczyk/static/js/main.ddaaee7a.js.map",
     "787.b7be9a07.chunk.js.map": "/polygon-draftsman-mcesarczyk/static/js/787.b7be9a07.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.07efe15a.js"
+    "static/js/main.ddaaee7a.js"
   ]
 }
