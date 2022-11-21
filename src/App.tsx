@@ -7,13 +7,11 @@ import Heading from './components/Heading';
 import Description from './sections/description';
 import Advantages from './sections/advantages';
 import GeorasterTest from './sections/georasterTest';
-import GeoJSONTest from './sections/geoJsonTest';
-import { getCredentials } from './utils/getCredentials';
 
 const App = () => {
   const username = process.env.REACT_APP_USERNAME;
   const password = process.env.REACT_APP_PASSWORD;
-  const geoJSONRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<HTMLDivElement>(null);
 
   const [key, setKey] = useState('');
   const [loginState, setLoginState] = useState("idle");
@@ -23,13 +21,12 @@ const App = () => {
   }, [key, loginState]);
 
   const scrollToMap = () => {
-    if (geoJSONRef.current !== null) {
-      geoJSONRef.current.scrollIntoView({ behavior: 'smooth' });
+    if (mapRef.current !== null) {
+      mapRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   useEffect(() => {
-    getCredentials(username, password, setKey, setLoginState);
     scrollToMap();
   }, []);
 
@@ -40,8 +37,7 @@ const App = () => {
       <Heading />
       <Description />
       <Advantages />
-      {/* <GeorasterTest mapRef={undefined} /> */}
-      <GeoJSONTest mapRef={geoJSONRef} />
+      <GeorasterTest mapRef={mapRef} />
     </ThemeProvider>
   );
 }
