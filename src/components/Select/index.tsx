@@ -4,15 +4,15 @@ import { ReactComponent as ArrowDown } from "../../assets/graphics/arrow_down.sv
 import { ReactComponent as ArrowUp } from "../../assets/graphics/arrow_up.svg";
 import { Button } from "../Button/styled";
 
-type selectProps = {
-  chosenOption: string,
-  setChosenOption: any,
-  availableOptions:   {
+interface selectProps {
+  chosenOption: string;
+  setChosenOption: any;
+  availableOptions: {
     id: number,
     value: string,
-    label: string
-  }[],
-}
+    label: string,
+  }[];
+};
 
 const Select = ({ chosenOption, setChosenOption, availableOptions }: selectProps) => {
   const [open, setOpen] = useState(false);

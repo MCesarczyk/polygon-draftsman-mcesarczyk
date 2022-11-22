@@ -18,6 +18,7 @@ export const InputsWrapper = styled.div`
 export const ButtonsWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
 `
 
 export const ButtonsRowWrapper = styled.div`

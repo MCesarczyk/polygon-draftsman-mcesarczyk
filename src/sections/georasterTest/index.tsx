@@ -5,35 +5,19 @@ import Select from "../../components/Select";
 import { LeafletMapWrapper } from "../../components/LeafletMapWrapper/styled";
 import { georasterTestOptions } from "../../assets/georasterTestOptions";
 import FileInput from "../../components/FileInput";
-import { RenderGeotifFromFile } from "./RenderGeotifFromFile";
 import NumberInput from "../../components/NumberInput";
 import { ButtonsWrapper, ControlsWrapper, InputsWrapper } from "./styled";
-import { RenderGeotifFromAPI } from "./RenderGeotifFromAPI";
-import { EXAMPLE_GEOTIF_URL } from "../../assets/variables";
+import { RenderGeotifFromFile } from "./RenderGeotifFromFile";
 
 type waterAreaTypes = {
   mapRef: any
 }
 
 const GeorasterTest = ({ mapRef }: waterAreaTypes) => {
-  const [chosenMap, setChosenMap] = useState("example");
-  const [apiUrl, setApiUrl] = useState('');
-  const [file, setFile] = useState(undefined);
   const [opacity, setOpacity] = useState(0.7);
   const [resolution, setResolution] = useState(256);
-
-  const cogUrl = process.env.REACT_APP_COG_URL;
-  const notCogUrl = process.env.REACT_APP_NOT_COG_URL;
-
-  useEffect(() => {
-    chosenMap === "cog" && cogUrl !== undefined && setApiUrl(cogUrl);
-    chosenMap === "not_cog" && notCogUrl !== undefined && setApiUrl(notCogUrl);
-    chosenMap === "example" && setApiUrl(EXAMPLE_GEOTIF_URL);
-  }, [chosenMap, cogUrl, notCogUrl]);
-
-  useEffect(() => {
-    console.log('apiUrl: ', apiUrl);
-  }, [apiUrl]);
+  const [colorScheme, setColorScheme] = useState<'worldCover'|'custom'>("worldCover");
+  const [file, setFile] = useState(undefined);
 
   useEffect(() => {
     console.log(file);
@@ -60,8 +44,8 @@ const GeorasterTest = ({ mapRef }: waterAreaTypes) => {
           <ButtonsWrapper>
             <FileInput setFile={(e: any) => setFile(e.target.files[0])} />
             <Select
-              chosenOption={chosenMap}
-              setChosenOption={setChosenMap}
+              chosenOption={colorScheme}
+              setChosenOption={setColorScheme}
               availableOptions={georasterTestOptions}
             />
           </ButtonsWrapper>
@@ -71,8 +55,7 @@ const GeorasterTest = ({ mapRef }: waterAreaTypes) => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
-          {file && <RenderGeotifFromFile opacity={opacity} resolution={resolution} file={file} />}
-          {apiUrl && <RenderGeotifFromAPI url={apiUrl} opacity={opacity} resolution={resolution} />}
+          {file && <RenderGeotifFromFile opacity={opacity} resolution={resolution} file={file} colorScheme={colorScheme} />}
         </MapContainer>
       </LeafletMapWrapper>
     </Section>

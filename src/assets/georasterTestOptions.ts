@@ -1,17 +1,12 @@
 export const georasterTestOptions = [
   {
     id: 1,
-    value: "example",
-    label: "example"
+    value: "worldCover",
+    label: "world cover"
   },
   {
     id: 2,
-    value: "cog",
-    label: "cog"
-  },
-  {
-    id: 3,
-    value: "not_cog",
-    label: "not cog"
+    value: "custom",
+    label: "custom"
   }
-]
+];
